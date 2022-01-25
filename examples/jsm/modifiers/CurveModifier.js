@@ -213,8 +213,7 @@ export class Flow {
 				child instanceof Mesh ||
 				child instanceof InstancedMesh
 			) {
-
-				child.material = child.material.clone();
+				child.material = typeof child.material !== "array" ? child.material.clone() : child.material.map(m => m.clone());
 				modifyShader( child.material, uniforms, numberOfCurves );
 
 			}
